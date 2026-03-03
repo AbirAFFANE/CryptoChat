@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupes de Discussion</title>
+    <link rel="stylesheet" href="groups.css">
+</head>
+<body>
+
+    <div class="chat-container">
+        <!-- Barre latérale gauche -->
+        <div class="sidebar">
+            <h2>CryptoChat</h2>
+            <input type="text" placeholder="Rechercher un groupe..." class="search-bar">
+            
+            <button class="create-group-btn">Créer un groupe</button>
+
+            <div class="groups-list">
+                <div class="group" onclick="openGroup('Groupe 1')">
+                    <span class="group-name">Groupe 1</span>
+                </div>
+                <div class="group" onclick="openGroup('Groupe 2')">
+                    <span class="group-name">Groupe 2</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zone principale -->
+        <div class="chat-area">
+            <div class="chat-header">
+                <h2 id="group-title">Sélectionnez un groupe</h2>
+            </div>
+            <div class="messages-container">
+                <p class="placeholder-text">Sélectionnez un groupe pour voir les messages.</p>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Écrire un message...">
+                <button class="send-btn">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="groups.js"></script>
+</body>
+</html>

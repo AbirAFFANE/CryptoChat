@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - CryptoShop</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+    <div class="auth-container">
+        <h1 class="glitch">Inscription</h1>
+
+        <form class="auth-form" onsubmit="handleRegister(event)">
+            <div class="input-group">
+                <input type="text" id="register-name" required>
+                <label for="register-name">Nom</label>
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="register-email" required>
+                <label for="register-email">Email</label>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="register-password" required>
+                <label for="register-password">Mot de passe</label>
+                <span class="toggle-password" onclick="togglePassword('register-password')">👁️</span>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="confirm-password" required>
+                <label for="confirm-password">Confirmer le mot de passe</label>
+                <span class="toggle-password" onclick="togglePassword('confirm-password')">👁️</span>
+            </div>
+
+            <button type="submit" class="btn">S'inscrire</button>
+
+            <p class="switch-auth">Déjà inscrit ? <a href="login.html">Se connecter</a></p>
+        </form>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

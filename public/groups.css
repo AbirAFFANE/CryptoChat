@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+    background: #0A0A0A;
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.chat-container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    height: 80vh;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 15px #6e00ff;
+}
+
+/* Barre latérale */
+.sidebar {
+    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(14,14,14,1) 100%);
+    width: 30%;
+    padding: 20px;
+    color: white;
+}
+
+h2 {
+    text-align: center;
+    text-shadow: 0px 0px 8px cyan;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+    background: #222;
+    color: white;
+}
+
+.create-group-btn {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(45deg, #6e00ff, #00d4ff);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.create-group-btn:hover {
+    background: linear-gradient(45deg, #00d4ff, #6e00ff);
+    box-shadow: 0px 0px 10px cyan;
+}
+
+.groups-list {
+    margin-top: 10px;
+}
+
+.group {
+    background: #1a1a1a;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.group:hover {
+    background: #292929;
+}
+
+.group-name {
+    color: cyan;
+    font-weight: bold;
+}
+
+/* Zone de chat */
+.chat-area {
+    background: #000;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.chat-header {
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+}
+
+.messages-container {
+    flex-grow: 1;
+    background: #111;
+    border-radius: 5px;
+    padding: 20px;
+    overflow-y: auto;
+    color: white;
+}
+
+.placeholder-text {
+    color: #555;
+    text-align: center;
+}
+
+.chat-input {
+    display: flex;
+    background: #222;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background: #333;
+    color: white;
+}
+
+.send-btn {
+    background: linear-gradient(45deg, #6e00ff, #00d4ff);
+    border: none;
+    padding: 8px 15px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.send-btn:hover {
+    background: linear-gradient(45deg, #00d4ff, #6e00ff);
+    box-shadow: 0px 0px 10px cyan;
+}

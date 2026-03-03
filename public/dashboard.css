@@ -1,0 +1,1005 @@
+/* Variables et reset */
+:root {
+  --primary: #4f46e5;
+  --primary-light: #6366f1;
+  --primary-dark: #4338ca;
+  --primary-hover: #4f46e5;
+  --primary-focus: rgba(79, 70, 229, 0.25);
+  --secondary: #0ea5e9;
+  --secondary-light: #38bdf8;
+  --secondary-dark: #0284c7;
+  --accent: #10b981;
+  --accent-light: #34d399;
+  --accent-dark: #059669;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #1e293b;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: rgba(79, 70, 229, 0.3);
+  --radius: 0.5rem;
+  --sidebar-width: 280px;
+  --header-height: 64px;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+
+  /* Dark mode variables */
+  --dark-primary: #6366f1;
+  --dark-primary-light: #818cf8;
+  --dark-primary-dark: #4f46e5;
+  --dark-primary-hover: #818cf8;
+  --dark-primary-focus: rgba(99, 102, 241, 0.25);
+  --dark-secondary: #0ea5e9;
+  --dark-secondary-light: #38bdf8;
+  --dark-secondary-dark: #0284c7;
+  --dark-accent: #10b981;
+  --dark-accent-light: #34d399;
+  --dark-accent-dark: #059669;
+  --dark-background: #0f172a;
+  --dark-foreground: #f8fafc;
+  --dark-card: #1e293b;
+  --dark-card-foreground: #f1f5f9;
+  --dark-border: #334155;
+  --dark-input: #334155;
+  --dark-ring: rgba(99, 102, 241, 0.3);
+}
+
+/* Appliquer le mode sombre par défaut */
+:root {
+  --primary: var(--dark-primary);
+  --primary-light: var(--dark-primary-light);
+  --primary-dark: var(--dark-primary-dark);
+  --primary-hover: var(--dark-primary-hover);
+  --primary-focus: var(--dark-primary-focus);
+  --secondary: var(--dark-secondary);
+  --secondary-light: var(--dark-secondary-light);
+  --secondary-dark: var(--dark-secondary-dark);
+  --accent: var(--dark-accent);
+  --accent-light: var(--dark-accent-light);
+  --accent-dark: var(--dark-accent-dark);
+  --background: var(--dark-background);
+  --foreground: var(--dark-foreground);
+  --card: var(--dark-card);
+  --card-foreground: var(--dark-card-foreground);
+  --border: var(--dark-border);
+  --input: var(--dark-input);
+  --ring: var(--dark-ring);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+}
+
+html,
+body {
+  height: 100%;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Structure principale */
+.app-container {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100%;
+  background-color: var(--card);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 20;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+.logo-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--primary);
+}
+
+.mobile-close {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--foreground);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+/* Profile section */
+.profile {
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-pic-container {
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+}
+
+.status-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--card);
+}
+
+.status-badge.online {
+  background-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--card), 0 0 0 4px rgba(16, 185, 129, 0.2);
+}
+
+.status-badge.away {
+  background-color: #eab308;
+}
+
+.status-badge.offline {
+  background-color: #94a3b8;
+}
+
+.username {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--card-foreground);
+  margin-bottom: 0.25rem;
+}
+
+.user-status {
+  font-size: 0.875rem;
+  color: var(--accent);
+  opacity: 0.8;
+}
+
+/* Navigation */
+.sidebar-nav {
+  flex: 1;
+  padding: 1rem 0.5rem;
+  overflow-y: auto;
+}
+
+.nav-item {
+  list-style: none;
+  margin-bottom: 0.5rem;
+}
+
+.nav-item a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  color: var(--card-foreground);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-item a svg {
+  width: 20px;
+  height: 20px;
+  color: var(--card-foreground);
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.nav-item a:hover {
+  background-color: rgba(99, 102, 241, 0.1);
+}
+
+.nav-item a:hover svg {
+  color: var(--primary);
+  opacity: 1;
+}
+
+.nav-item.active a {
+  background-color: var(--primary);
+  color: white;
+}
+
+.nav-item.active a svg {
+  color: white;
+  opacity: 1;
+}
+
+/* Sidebar footer */
+.sidebar-footer {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.encryption-status {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background-color: rgba(16, 185, 129, 0.1);
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+
+.encryption-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--accent);
+}
+
+.encryption-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.encryption-info span {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.encryption-info small {
+  font-size: 0.75rem;
+  color: var(--card-foreground);
+  opacity: 0.7;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.logout-btn:hover {
+  background-color: rgba(239, 68, 68, 0.2);
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--background);
+}
+
+.main-header {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--card);
+}
+
+.main-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--card-foreground);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--card-foreground);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.new-chat-btn,
+.new-group-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.new-chat-btn svg,
+.new-group-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.new-chat-btn:hover,
+.new-group-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.new-group-btn {
+  background-color: var(--secondary);
+}
+
+.new-group-btn:hover {
+  background-color: var(--secondary-light);
+}
+
+/* Search */
+.search-container {
+  padding: 1rem 1.5rem;
+  background-color: var(--background);
+}
+
+.search-bar {
+  position: relative;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: var(--foreground);
+  opacity: 0.5;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--card-foreground);
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.search-bar input::placeholder {
+  color: var(--card-foreground);
+  opacity: 0.5;
+}
+
+/* Conversations */
+.conversations-container {
+  flex: 1;
+  padding: 0 1.5rem 1.5rem;
+  overflow-y: auto;
+}
+
+.chat-list {
+  list-style: none;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--card);
+  border-radius: var(--radius);
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  position: relative;
+}
+
+.chat-item:hover {
+  background-color: rgba(99, 102, 241, 0.05);
+  transform: translateX(4px);
+}
+
+.chat-item.active {
+  border-left-color: var(--primary);
+  background-color: rgba(99, 102, 241, 0.1);
+}
+
+.chat-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chat-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-info h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--card-foreground);
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-info p {
+  font-size: 0.875rem;
+  color: var(--card-foreground);
+  opacity: 0.7;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-time {
+  font-size: 0.75rem;
+  color: var(--card-foreground);
+  opacity: 0.5;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: none;
+}
+
+.modal.active {
+  display: flex;
+  animation: fadeIn 0.2s ease forwards;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  background-color: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 101;
+  transform: scale(0.95);
+  opacity: 0;
+  animation: modalIn 0.3s 0.1s ease forwards;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--card-foreground);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--card-foreground);
+  opacity: 0.5;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  transition: opacity 0.2s ease;
+}
+
+.modal-close:hover {
+  opacity: 1;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--card-foreground);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--foreground);
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--background);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Mobile overlay */
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 15;
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+    z-index: 30;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .mobile-close {
+    display: block;
+  }
+
+  .mobile-overlay.active {
+    display: block;
+  }
+
+  .main-header {
+    padding: 0 1rem;
+  }
+
+  .header-actions {
+    gap: 0.5rem;
+  }
+
+  .new-chat-btn span,
+  .new-group-btn span {
+    display: none;
+  }
+
+  .new-chat-btn,
+  .new-group-btn {
+    padding: 0.5rem;
+  }
+
+  .search-container,
+  .conversations-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+}
+
+/* Animation pour les nouveaux messages */
+.new-message {
+  animation: newMessagePulse 2s ease;
+}
+
+@keyframes newMessagePulse {
+  0% {
+    border-left-color: var(--accent);
+    background-color: rgba(16, 185, 129, 0.1);
+  }
+  50% {
+    border-left-color: var(--accent);
+    background-color: rgba(16, 185, 129, 0.05);
+  }
+  100% {
+    border-left-color: transparent;
+    background-color: var(--card);
+  }
+}
+
+/* Animation pour le statut de chiffrement */
+.encryption-status {
+  position: relative;
+  overflow: hidden;
+}
+
+.encryption-status::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0) 70%);
+  animation: pulseGlow 3s infinite;
+  z-index: -1;
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+}
+
+/* Animation pour les éléments de la liste */
+.chat-item {
+  animation: slideIn 0.3s ease-out;
+  animation-fill-mode: both;
+}
+
+.chat-list .chat-item:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.chat-list .chat-item:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.chat-list .chat-item:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.chat-list .chat-item:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.chat-list .chat-item:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.chat-list .chat-item:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.chat-list .chat-item:nth-child(7) {
+  animation-delay: 0.35s;
+}
+.chat-list .chat-item:nth-child(8) {
+  animation-delay: 0.4s;
+}
+.chat-list .chat-item:nth-child(9) {
+  animation-delay: 0.45s;
+}
+.chat-list .chat-item:nth-child(10) {
+  animation-delay: 0.5s;
+}
+
+/* Effet de survol pour les boutons */
+.new-chat-btn,
+.new-group-btn,
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.new-chat-btn::after,
+.new-group-btn::after,
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.new-chat-btn:hover::after,
+.new-group-btn:hover::after,
+.btn-primary:hover::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+/* Animation pour le logo */
+.logo {
+  position: relative;
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+  transition: width 0.3s ease;
+}
+
+.logo:hover::after {
+  width: 100%;
+}
+
+/* Animation pour les éléments de navigation */
+.nav-item a {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+  transition: left 0.5s;
+  z-index: -1;
+}
+
+.nav-item a:hover::after {
+  left: 100%;
+}
+
+/* Effet de focus pour les inputs */
+input:focus,
+textarea:focus {
+  animation: focusPulse 1s ease;
+}
+
+@keyframes focusPulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--ring);
+  }
+  70% {
+    box-shadow: 0 0 0 4px var(--ring);
+  }
+  100% {
+    box-shadow: 0 0 0 2px var(--ring);
+  }
+}
+
+/* Animation pour le bouton de déconnexion */
+.logout-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.logout-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.2), transparent);
+  transition: left 0.5s;
+  z-index: 0;
+}
+
+.logout-btn:hover::before {
+  left: 100%;
+}
+
+.logout-btn span,
+.logout-btn svg {
+  position: relative;
+  z-index: 1;
+}
