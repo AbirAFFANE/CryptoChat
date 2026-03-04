@@ -121,6 +121,23 @@ Models represent interactions between **Users, Administrator, Server, and Databa
 - Enhanced scalability  
 
 ---
+---
+
+## 🚀 How to Run the Project
+
+1. Clone the repository:
+   git clone https://github.com/AbirAFFANE/CryptoChat.git
+   
+3. Install dependencies:
+   npm install
+
+4. Create a `.env` file and configure environment variables if needed.
+
+5. Start the server:
+   npm start
+
+6. Open your browser and go to:
+   http://localhost:3000
 
 ## 👩‍💻 Author
 **Abir Affane**  
